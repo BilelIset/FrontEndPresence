@@ -34,7 +34,7 @@ COPY --from=build /app/dist/presence/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Exposez le port 80
-EXPOSE 80
+EXPOSE 8082
 
 # Démarrer Nginx
 CMD ["nginx", "-g", "daemon off;"]

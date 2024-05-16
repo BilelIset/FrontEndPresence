@@ -1,10 +1,10 @@
 pipeline{
     agent any
     stages{
-        stage("load from git"){
-            git :https://github.com/BilelIset/FrontEndPresence.git
-        }
+        
         stage{
+            sh 'docker build --tag front_iset .'
+            sh 'docker run -p 8082:8082 front_iset'
             
         }
     }
