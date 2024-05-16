@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  url='https://ba31-196-187-152-254.ngrok-free.app/';
+  url='http://back.apirest.tech/';
 
   constructor(private http:HttpClient) { }
   connect(user:any):Observable<any>{
