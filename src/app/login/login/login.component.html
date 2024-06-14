@@ -1,19 +1,18 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Presence</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body><div class="container" style="margin-top: 20%;margin-left: 30%;">
-  <form #loginForm="ngForm" (ngSubmit)="connecter(loginForm)">
-   <label  style="margin-right: 12.2%;">Login</label> <input type="text" name="login" id="login" [(ngModel)]="userToLog.login" required><br><br>
-    <label style="margin-right: 10%;">Password</label><input type="password" name="password" id="password" [(ngModel)]="userToLog.password" required><br><br><br>
-    <input  type="submit" value="connecter">
-  </form>
-  <br><br>{{ resp.admin }}
+<div style="align-items: center;">
+  <img style="height: 25%; width: 25%; margin-left: 35%; margin-bottom: 5%; margin-top: 5%;" src="./assets/logo.png">
 </div>
-</body>
-</html>
+<div class="container" style="margin-left: 30%;">
+  <form #loginForm="ngForm" (ngSubmit)="connecter(loginForm)">
+    <div class="form-group">
+      <label style="margin-right: 12.2%;">Login</label>
+      <input class="form-control-sm border-primary" type="text" name="login" id="login" [(ngModel)]="userToLog.login" required>
+    </div>
+    <div class="form-group">
+      <label style="margin-right: 10%;">Password</label>
+      <input class="form-control-sm border-primary" type="password" name="password" id="password" [(ngModel)]="userToLog.password" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Connecter</button>
+  </form>
+  <br><br>
+  {{ resp.admin }}
+</div>
