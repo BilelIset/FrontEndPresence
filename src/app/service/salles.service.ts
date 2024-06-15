@@ -7,7 +7,7 @@ import { Salle } from '../model/Salle';
   providedIn: 'root'
 })
 export class SallesService {
-  url='https://back.apirest.tech/';
+  url='https://back.apirest.tech/salle';
 
   constructor(private http :HttpClient)
   { }
