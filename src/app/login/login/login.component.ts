@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Resp } from '../../model/Resp';
 import { User } from '../../model/User';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ alert("Formulaire invalide !!")
     this.logserv.connect(form.value).subscribe(
       data => {
         this.resp = data;
+        localStorage.setItem("login",form.value.login)
         this.verifLogin(this.resp);
        
       }

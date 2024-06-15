@@ -9,12 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
+import { SalleComponent } from './salle/salle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    SalleComponent
   ],
   imports: [
     BrowserModule,
