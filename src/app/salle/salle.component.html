@@ -1,1 +1,37 @@
-<p>salle works!</p>
+ <div class="card" style="background-color: rgb(8, 134, 245);">
+ <app-nav-bar></app-nav-bar>
+ <div  style="display: block;" class="container" style="padding-top: 10%;padding-left: 15%;">
+    <h1 style="color: rgb(252, 251, 250);"> Liste des salles </h1>
+    
+
+        
+       
+       
+    
+ <table class="table table-striped">
+    <thead>
+        <tr>
+            <th > Id </th>
+            <th>Nom </th>
+            <th>Département</th>
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><input type="number" name="id" placeholder="id" [(ngModel)]="idRechercher.salle1"></td>
+          <td><input type="text" placeholder="Nom Salle" [(ngModel)]="idRechercher.nom_salle" name="nomSalle"></td>
+          <td><input type="text" placeholder="Nom Département" [(ngModel)]="idRechercher.nomdepsalle" name="nomDepartement"></td>
+        </tr>
+      
+        <tr *ngFor="let p of filtre()">
+          <td>{{ p.salle1 }}</td>
+          <td>{{ p.nom_salle }}</td>
+          <td>{{ p.nomdepsalle }}</td>
+        </tr>
+      </tbody>
+      
+ </table>
+ </div>
+</div>

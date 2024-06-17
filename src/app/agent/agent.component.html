@@ -1,0 +1,156 @@
+<div style="background-color: rgb(8, 134, 245);">
+<app-nav-bar></app-nav-bar>
+
+
+<div class="container" *ngIf="ajoutMode==true" style="padding-left: 15%; padding-top: 5%; background-color: rgb(8, 134, 245);">
+    <div class="container" style="background-color: rgb(8, 134, 245);">
+        <h1 style="color: white;">Modifier Agent</h1>
+        <form #AgentForm="ngForm" class="form-group">
+            <div class="row mb-3">
+                <label for="id" class="col-md-2 col-form-label" style="color: white;">Id Agent:</label>
+                <div class="col-md-4">
+                    <input id="id" class="form-control" placeholder="id du Agent" readonly name="idUser" type="number" [(ngModel)]="AgentCourant.idUser" required />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="login" class="col-md-2 col-form-label" style="color: white;">Login:</label>
+                <div class="col-md-4">
+                    <input id="login" class="form-control" placeholder="Login" type="text" name="login" [(ngModel)]="AgentCourant.login" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="password" class="col-md-2 col-form-label" style="color: white;">Mot De Passe:</label>
+                <div class="col-md-4">
+                    <div *ngIf="!logged">
+                        <button class="btn btn-outline-danger w-100" style="color: white;" (click)="verifPass(AgentCourant)">Modifier le Mot De Passe</button>
+                    </div>
+                    <div *ngIf="logged">
+                        <input id="password" class="form-control" placeholder="password" type="text" name="password" [(ngModel)]="AgentCourant.password" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="isAdmin" class="col-md-2 col-form-label" style="color: white;">Role:</label>
+                <div class="col-md-4">
+                    <select id="isAdmin" class="form-control" name="isAdmin" [(ngModel)]="AgentCourant.isAdmin">
+                        <option value="true">Admin</option>
+                        <option value="false">Non Admin</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 offset-md-2">
+                    <button type="submit" class="btn btn-warning w-100" style="color: white;" (click)="editerAgent(AgentForm)" [disabled]="!AgentForm.form.valid">Modifier <i class="bi bi-pencil"></i></button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-outline-light w-100" type="reset" (click)="fermerEdition()">Annuler</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<div class="container" *ngIf="add==false" style="padding-left: 15%; padding-bottom: 3%; padding-top: 5%;">
+    <button class="btn btn-outline-warning" style="color: aliceblue; font-size: 20px; border-color: white; border-style: double;" (click)="ajoutMode=false; add=true">Nouveau Agent</button>
+</div>
+<div class="container" style="padding-left: 15%;" *ngIf="add==true">
+    <div class="container" style="padding-top: 5%;">
+        <h1 class="text-warning">Ajouter agent</h1>
+        <form class="form-group" #FormAgent="ngForm" style="padding-bottom: 5%;">
+            <div class="row mb-3">
+                <label for="login" class="col-md-2 col-form-label">Login</label>
+                <div class="col-md-4">
+                    <input id="login" class="form-control" type="text" placeholder="Login" [(ngModel)]="idRechercher.login" name="login">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="password" class="col-md-2 col-form-label">Mot De Passe</label>
+                <div class="col-md-4">
+                    <input id="password" class="form-control" type="text" placeholder="Mot De Passe" [(ngModel)]="idRechercher.password" name="password">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="isAdmin" class="col-md-2 col-form-label">Role</label>
+                <div class="col-md-4">
+                    <select id="isAdmin" class="form-control" [(ngModel)]="idRechercher.isAdmin" name="isAdmin">
+                        <option value="true">Admin</option>
+                        <option value="false">Non Admin</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <button class="btn btn-outline-warning w-100" style="color: white;" (click)="ajouterAgent(FormAgent)">Ajouter</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-light w-100" (click)="add=false">Annuler</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container" style="padding-left: 15%;">
+    <h1 style="color: rgb(253, 253, 254);"> Liste des Agents </h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> Id Agent </th>
+                <th>Login</th>
+                <th>Mot De Passe</th>
+                <th>Admin</th>
+                <th></th>
+                <th></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input placeholder="ID" [(ngModel)]="idRechercher.idUser">  </td>
+                <td><input placeholder="Login"[(ngModel)]="idRechercher.login"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr *ngFor="let p of filtre()">
+                <td> {{p.idUser}}</td>
+                <td> {{p.login}}</td>
+                <td >*********</td>
+                <td> {{p.isAdmin}}</td>
+                
+                <td>
+                    <button class="btn btn-outline-primary" (click)="selectionnerAgent(p) "><i class="bi bi-pen"></i>
+
+                        Editer
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger" (click)="supprimerAgent(p)"><i class="bi bi-trash"></i>
+
+                        Supprimer
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

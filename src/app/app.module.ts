@@ -10,13 +10,17 @@ import { APP_BASE_HREF } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { SalleComponent } from './salle/salle.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { AgentComponent } from './agent/agent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MenuComponent,
-    SalleComponent
+    SalleComponent,
+    NavBarComponent,
+    AgentComponent
   ],
   imports: [
     BrowserModule,
