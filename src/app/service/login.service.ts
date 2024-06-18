@@ -10,7 +10,7 @@ export class LoginService {
   isLoggedIn() {
     throw new Error('Method not implemented.');
   }
-  url='http://localhost:8085/';
+  url='https://back.apirest.tech/';
 
   constructor(private http:HttpClient) { }
   connect(user:any):Observable<any>{
