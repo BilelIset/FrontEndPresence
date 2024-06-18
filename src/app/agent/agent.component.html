@@ -1,5 +1,5 @@
-<div style="background-color: rgb(8, 134, 245);">
-    <div class="container" *ngIf="ajoutMode" style="padding-left: 15%; padding-top: 5%; background-color: rgb(8, 134, 245);">
+<div style="background-color: rgb(50, 50, 152);">
+    <div class="container" *ngIf="ajoutMode" style="padding-left: 15%; padding-top: 5%; background-color: rgb(50, 50, 152);">
       <h1 style="color: white;">Modifier Agent</h1>
       <form #AgentForm="ngForm" class="form-group">
         <div class="row mb-3">
@@ -54,19 +54,19 @@
         <h1 class="text-warning">Ajouter agent</h1>
         <form class="form-group" #FormAgent="ngForm" style="padding-bottom: 5%;">
           <div class="row mb-3">
-            <label for="login" class="col-md-2 col-form-label">Login</label>
+            <label for="login" class="col-md-2 col-form-label text-warning">Login</label>
             <div class="col-md-4">
               <input id="login" class="form-control" type="text" placeholder="Login" [(ngModel)]="idRechercher.login" name="login">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="password" class="col-md-2 col-form-label">Mot De Passe</label>
+            <label for="password" class="col-md-2 col-form-label text-warning">Mot De Passe</label>
             <div class="col-md-4">
               <input id="password" class="form-control" type="text" placeholder="Mot De Passe" [(ngModel)]="idRechercher.password" name="password">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="isAdmin" class="col-md-2 col-form-label">Role</label>
+            <label for="isAdmin" class="col-md-2 col-form-label text-warning">Role</label>
             <div class="col-md-4">
               <select id="isAdmin" class="form-control" [(ngModel)]="idRechercher.isAdmin" name="isAdmin">
                 <option value="true">Admin</option>

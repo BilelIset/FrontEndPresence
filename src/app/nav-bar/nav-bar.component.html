@@ -1,20 +1,23 @@
-<div class="sidebar bg-warning d-flex flex-column" style="position:unset;display:flexbox;">
-  <div class="sidebar-header d-flex align-items-center justify-content-center bg-warning">
+<div class="sidebar bg-warning d-flex flex-column" style="position:initial;display:flexbox;">
+  <div class="sidebar-header d-flex align-items-center justify-content-center bg-warning-subtle">
     <img src="./assets/logo.png" alt="Logo" class="img-fluid" style="height: 200px; width: 250px;">
+  </div>
+  <div class="container bg-warning-subtle text-bg-info">
+    <h6  style="color: white; background-color: rgb(40, 80, 149);">Bienvenue  {{loggedUser}}</h6>
   </div>
   <ul class="nav flex-column">
     <li class="nav-item">
-      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a class="nav-link" style="color: blue;" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/agent" routerLinkActive="active">Agents</a>
+      <a class="nav-link" style="color: blue;" routerLink="/agent" routerLinkActive="active">Agents</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/salle" routerLinkActive="active">Salles</a>
+      <a class="nav-link" style="color: blue;" routerLink="/salle" routerLinkActive="active">Salles</a>
     </li>
   </ul>
   <div class="mt-auto p-3">
-    <h5>{{loggedUser}}</h5>
+    <h5 style="color: blue;">{{loggedUser}}</h5>
     <button class="btn btn-danger" (click)="deconnecter()">Déconnecter</button>
   </div>
 </div>

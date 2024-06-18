@@ -1,0 +1,24 @@
+/* styles.css ou app.component.css */
+
+.app-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    background-color: rgb(250, 139, 4);
+    overflow-y: auto;
+  }
+  
+  .main-content {
+    margin-left: 250px; /* largeur de la sidebar */
+    padding: 20px;
+    background-color: rgb(8, 134, 245);
+    min-height: 100vh; /* assure que le contenu prend au moins toute la hauteur de la fenêtre */
+    width: calc(100% - 250px); /* ajuste la largeur du contenu principal */
+  }
+  
