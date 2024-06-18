@@ -20,6 +20,9 @@ connecter(form:NgForm) {
   
   
 }
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('login'); // Vérifie si 'login' est présent dans localStorage
+  }
 resp=new Resp();
   title = 'presence';
 userToLog=new User();

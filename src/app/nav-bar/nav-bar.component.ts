@@ -7,15 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+loggedUser=localStorage.getItem('login')?.toUpperCase();
 
   constructor(private router: Router) {}
+  
 
   deconnecter() {
     localStorage.removeItem('login');
     this.router.navigate(['/login']);
   }
-loggedUser=localStorage.getItem('login')?.toUpperCase();
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('login'); // Vérifie si 'login' est présent dans localStorage
-  }
+
 }
