@@ -1,7 +1,6 @@
-<div *ngIf="isLoggedIn()">
-<div class="sidebar" style="background-color: rgb(250, 139, 4);">
-  <div class="sidebar-header" style="background-color: rgb(250, 139, 4);">
-    <img src="./assets/logo.png" alt="Logo" style="height: 200;width: 250px;">
+<div class="sidebar bg-warning d-flex flex-column" style="position:unset;display:flexbox;">
+  <div class="sidebar-header d-flex align-items-center justify-content-center bg-warning">
+    <img src="./assets/logo.png" alt="Logo" class="img-fluid" style="height: 200px; width: 250px;">
   </div>
   <ul class="nav flex-column">
     <li class="nav-item">
@@ -11,12 +10,11 @@
       <a class="nav-link" routerLink="/agent" routerLinkActive="active">Agents</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/salle" routerLinkActive="active" >Salles</a>
+      <a class="nav-link" routerLink="/salle" routerLinkActive="active">Salles</a>
     </li>
   </ul>
-  <div style="padding-top: 120%;">
-   <h5 style="margin-left: 5%;">{{loggedUser}}</h5> 
-    <button style="color: red;" class="btn btn-toolbar" (click)="deconnecter()">Déconnecter</button>
-    
+  <div class="mt-auto p-3">
+    <h5>{{loggedUser}}</h5>
+    <button class="btn btn-danger" (click)="deconnecter()">Déconnecter</button>
   </div>
 </div>

@@ -8,8 +8,18 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
- 
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3" >
+        <app-nav-bar></app-nav-bar>
+      </div>
+      <!-- Main Content -->
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
   
-  <router-outlet></router-outlet>
 </body>
 </html>
