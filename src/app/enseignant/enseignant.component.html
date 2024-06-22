@@ -1,0 +1,99 @@
+<div style="background-color: rgb(50, 50, 152);">
+    <div class="container" *ngIf="modif" style="padding-left: 15%; padding-top: 5%; background-color: rgb(50, 50, 152);">
+      <h1 style="color: white;">Modifier Enseignant</h1>
+      <form #EnseignantForm="ngForm" class="form-group">
+        <div class="row mb-3">
+          <label for="id" class="col-md-2 col-form-label" style="color: white;">Matricule Enseignant:</label>
+          <div class="col-md-4">
+            <input id="matEnseignant" class="form-control" readonly name="matEnseignant" type="text" [(ngModel)]="EnseignantCourant.matEnseignant" required />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="nomEnseignant" class="col-md-2 col-form-label" style="color: white;">Nom Enseignant :</label>
+          <div class="col-md-4">
+            <input id="nomEnseignant" class="form-control" readonly type="text" name="nomEnseignant" [(ngModel)]="EnseignantCourant.nomEnseignant" />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="depEnseignant" class="col-md-2 col-form-label" style="color: white;">Département Enseignant:</label>
+          <div class="col-md-4">
+            
+            <div >
+              <input id="depEnseignant" class="form-control" readonly type="text" name="depEnseignant" [(ngModel)]="EnseignantCourant.depEnseignant" />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+            <label for="email_enseignant" class="col-md-2 col-form-label" style="color: white;">Email Enseignant:</label>
+            <div class="col-md-4">
+              
+              <div >
+                <input id="email_enseignant" class="form-control"  type="text" name="email_enseignant" [(ngModel)]="EnseignantCourant.email_enseignant" />
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="tel_enseignant" class="col-md-2 col-form-label" style="color: white;">Tel° Enseignant:</label>
+            <div class="col-md-4">
+              
+              <div >
+                <input id="tel_enseignant" class="form-control" placeholder="tel_enseignant" type="text" name="tel_enseignant" [(ngModel)]="EnseignantCourant.tel_enseignant" />
+              </div>
+            </div>
+          </div>
+        
+        <div class="row">
+          <div class="col-md-2 offset-md-2">
+            <button type="submit" class="btn btn-warning w-100" style="color: white;" (click)="editerEnseignant(EnseignantForm)" [disabled]="!EnseignantForm.form.valid">Modifier <i class="bi bi-pencil"></i></button>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-outline-light w-100" type="reset" (click)="fermerEdition()">Annuler</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  
+    <div class="container mt-5">
+        <h1 class="text-white">Liste des Enseignants</h1>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Mat Enseignant</th>
+                <th>Nom Enseignant</th>
+                <th>Département</th>
+                <th>Email</th>
+                <th>Tel°</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input class="form-control" name="matEnseignant" placeholder="Matricule" [(ngModel)]="idRechercher.matEnseignant"></td>
+                <td><input class="form-control" name="nomEnseignant" placeholder="Nom " [(ngModel)]="idRechercher.nomEnseignant"></td>
+                <td><input class="form-control" name="depEnseignant" placeholder="Département " [(ngModel)]="idRechercher.depEnseignant"></td>
+                <td><input class="form-control" name="email_enseignant" placeholder="Email" [(ngModel)]="idRechercher.email_enseignant"></td>
+                <td><input class="form-control" name="tel_enseignant" placeholder="Tel°" [(ngModel)]="idRechercher.tel_enseignant"></td>
+                
+                <td></td>
+              </tr>
+              <tr *ngFor="let p of filtre()"> 
+                <td>{{ p.matEnseignant }}</td>
+                <td>{{ p.nomEnseignant }}</td>
+                <td>{{p.depEnseignant}}</td>
+                <td>{{ p.email_enseignant }}</td>
+                <td>{{p.tel_enseignant}}</td>
+                <td>
+                  <button class="btn btn-outline-primary" (click)="selectionnerEnseignant(p)">
+                    <i class="bi bi-pen"></i> Editer
+                  </button>
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+  </div>
+  

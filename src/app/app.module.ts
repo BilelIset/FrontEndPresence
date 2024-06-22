@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { SalleComponent } from './salle/salle.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AgentComponent } from './agent/agent.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { EnseignantComponent } from './enseignant/enseignant.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AgentComponent } from './agent/agent.component';
     MenuComponent,
     SalleComponent,
     NavBarComponent,
-    AgentComponent
+    AgentComponent,
+    DashboardComponent,
+    EnseignantComponent
   ],
   imports: [
     BrowserModule,
