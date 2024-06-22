@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EnseignantService {
 
-  url='http://localhost:8085/ens';
+  url='https://back.apirest.tech/ens';
 
   constructor(private http :HttpClient)
   { }
