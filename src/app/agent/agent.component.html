@@ -18,7 +18,8 @@
           <label for="password" class="col-md-2 col-form-label" style="color: white;">Mot De Passe:</label>
           <div class="col-md-4">
             <div *ngIf="!logged">
-              <button class="btn btn-outline-danger w-100" style="color: white;" (click)="verifPass(AgentCourant)">Modifier le Mot De Passe</button>
+              <button class="btn btn-outline-danger w-100" style="color: white;" (click)="verifPass(AgentCourant)">
+                Modifier le Mot De Passe</button>
             </div>
             <div *ngIf="logged">
               <input id="password" class="form-control" placeholder="password" type="text" name="password" [(ngModel)]="AgentCourant.password" />
@@ -46,7 +47,7 @@
     </div>
   
     <div class="container" *ngIf="!add" style="padding-left: 15%; padding-bottom: 3%; padding-top: 5%;">
-      <button class="btn btn-outline-warning" style="color: aliceblue; font-size: 20px; border-color: white; border-style: double;" (click)="ajoutMode=false; add=true">Nouveau Agent</button>
+      <button class="btn btn-outline-warning" style="color: aliceblue; font-size: 20px; border-color: white; border-style: double;" (click)="ajoutMode=false; add=true"><i class="bi bi-person-fill-add"></i>  Nouveau Agent</button>
     </div>
   
     <div class="container" *ngIf="add" style="padding-left: 15%;">

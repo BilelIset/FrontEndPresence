@@ -14,6 +14,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AgentComponent } from './agent/agent.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnseignantComponent } from './enseignant/enseignant.component';
+import {  AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
