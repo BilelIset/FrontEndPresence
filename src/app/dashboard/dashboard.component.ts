@@ -13,7 +13,6 @@ idRechercher: any;
   ngOnInit(): void {
 this.abserv.getAbsence().subscribe(data=>{
   this.listAbsence=data;
-  console.log(this.listAbsence)
 
 })  }
 

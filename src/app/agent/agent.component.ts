@@ -37,7 +37,7 @@ ngOnInit(): void {
 chargerListe(){
   this.logserv.getUsers().subscribe(data=>{
     this.loginList=data;
-    console.log(this.loginList)
+    
   })
 }
 supprimerAgent(p: any) {
@@ -65,8 +65,11 @@ applyFilter(): any {
 throw new Error('Method not implemented.');
 }
 ajouterAgent(form: NgForm) {
+  
   if(form.value.login=="" || form.value.password=="" || form.value.isAdmin==""){
-    alert("Verifier les donné saisie")
+    
+    
+   alert("Verifier les donné saisie")
   }else{
   this.logserv.addUsers(form.value).subscribe(data=>{
    let us:any;
@@ -75,20 +78,21 @@ ajouterAgent(form: NgForm) {
     alert("Utilisateur  est ajouté avec succés ")
     this.chargerListe()
     this.add=false;
-this.chargerListe();
+    this.nouveauAgent= {idUser:'',login:'',password:'',isAdmin:''};
+   this.chargerListe();
 
    }else if(!us){
     alert("nom d'utilsateur déja existant !")
    }else if(us==null){
     alert("Erreur inconnu c'est produite veuillez réessayer")
    }
-  })}
-}
+  })
+}}
 fermerEdition() {
 this.ajoutMode=false;
 this.logged=false}
 editerAgent(form: NgForm) {
-  console.log("donées du formulaire"+form.value.idUser)
+ 
 let us=new Users();
 us.setIdUser(form.value.idUser);
 us.setLogin(form.value.login);
@@ -97,7 +101,7 @@ us.setIsAdmin(Boolean(form.value.isAdmin));
 if(us.getIdUser()!=undefined){
   this.logserv.updateUsers(us.getIdUser(), us).subscribe(data=>{
    this.us1=data
-   console.log("donées recu"+us)
+   
   this.ajoutMode=false;
 
    if(this.us1.idUser==form.value.idUser){
