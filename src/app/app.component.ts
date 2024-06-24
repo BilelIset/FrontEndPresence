@@ -11,15 +11,7 @@ import { Resp } from './model/Resp';
 })
 export class AppComponent {
   constructor(private  logserv:LoginService){}
-connecter(form:NgForm) {
-  this.logserv.connect(form.value).subscribe(data=>{
-    this.resp=data;
-    console.log(this.resp)
 
-  })
-  
-  
-}
   isLoggedIn(): boolean {
     return !!localStorage.getItem('login'); // Vérifie si 'login' est présent dans localStorage
   }

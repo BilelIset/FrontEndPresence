@@ -25,17 +25,19 @@ alert("Formulaire invalide !!")
     this.logserv.connect(form.value).subscribe(
       data => {
         this.resp = data;
-        localStorage.setItem("login",form.value.login)
-        this.verifLogin(this.resp);
+        
+        this.verifLogin(this.resp,form.value.login.toString());
        
       }
     );
   }
 
-  verifLogin(resp: Resp) {
+  verifLogin(resp: Resp,login:any) {
     if (resp.admin && resp.statue) {
       this.router.navigate(['/menu']);
+      localStorage.setItem("login",login)
     } else {
+      alert("Login et/ou ot de passe invalide")
     }
   }
 }

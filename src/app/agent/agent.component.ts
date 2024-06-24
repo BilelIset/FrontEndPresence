@@ -9,8 +9,12 @@ import { Users } from '../model/Users';
   styleUrl: './agent.component.css'
 })
 export class AgentComponent implements OnInit {
+nouveauAgent= {idUser:'',login:'',password:'',isAdmin:''};
+hideMsg() {
+this.message=""}
+message="";
 verifPass(p:any) {
-  const pass=window.prompt("Entrer le mot de passe")
+  const pass=window.prompt("Entrer le mot de passe actuelle de : "+this.AgentCourant.login)
   if(pass===p.password){
     this.logged=true
   }else{
@@ -48,6 +52,10 @@ if(quest){this.logserv.deleteUsers(p.idUser).subscribe(data=>{
   }
 })}
 }
+affPsw(){
+  this.message="Cliquer et entrer le mot de passe du compte: "+this.AgentCourant.login
+
+}
 selectionnerAgent(p: any) {
 this.AgentCourant={...p}
 this.ajoutMode=true
@@ -63,11 +71,16 @@ ajouterAgent(form: NgForm) {
   this.logserv.addUsers(form.value).subscribe(data=>{
    let us:any;
    us=data
-   if(us.login==form.value.login){
-    alert("L'utilisateur : "+us.login+ " est ajouté avec succés avec un Id = "+us.idUser)
+   if(us){
+    alert("Utilisateur  est ajouté avec succés ")
+    this.chargerListe()
     this.add=false;
 this.chargerListe();
 
+   }else if(!us){
+    alert("nom d'utilsateur déja existant !")
+   }else if(us==null){
+    alert("Erreur inconnu c'est produite veuillez réessayer")
    }
   })}
 }
@@ -85,6 +98,7 @@ if(us.getIdUser()!=undefined){
   this.logserv.updateUsers(us.getIdUser(), us).subscribe(data=>{
    this.us1=data
    console.log("donées recu"+us)
+  this.ajoutMode=false;
 
    if(this.us1.idUser==form.value.idUser){
     alert("L'utilisateur : "+this.us1.idUser+ " est modifié avec succés ")

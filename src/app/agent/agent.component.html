@@ -18,9 +18,11 @@
           <label for="password" class="col-md-2 col-form-label" style="color: white;">Mot De Passe:</label>
           <div class="col-md-4">
             <div *ngIf="!logged">
-              <button class="btn btn-outline-danger w-100" style="color: white;" (click)="verifPass(AgentCourant)">
-                Modifier le Mot De Passe</button>
-            </div>
+              <button class="btn btn-outline-danger w-100" style="color: white;" (click)="verifPass(AgentCourant)" (mouseleave)="hideMsg()" (mouseover)="affPsw()">
+                <i class="bi bi-shield-lock-fill" ></i> Modifier Mot De Passe<h6 style="color: yellow;">{{ message }}</h6></button>
+                
+              </div>
+            
             <div *ngIf="logged">
               <input id="password" class="form-control" placeholder="password" type="text" name="password" [(ngModel)]="AgentCourant.password" />
             </div>
@@ -37,10 +39,10 @@
         </div>
         <div class="row">
           <div class="col-md-2 offset-md-2">
-            <button type="submit" class="btn btn-warning w-100" style="color: white;" (click)="editerAgent(AgentForm)" [disabled]="!AgentForm.form.valid">Modifier <i class="bi bi-pencil"></i></button>
+            <button type="submit" class="btn btn-warning w-100" style="color: white;" (click)="editerAgent(AgentForm)" [disabled]="!AgentForm.form.valid"> <i class="bi bi-floppy2-fill"></i> Valider</button>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-outline-light w-100" type="reset" (click)="fermerEdition()">Annuler</button>
+            <button class="btn btn-outline-light w-100" type="reset" (click)="fermerEdition()"><i class="bi bi-x-octagon"></i> Annuler</button>
           </div>
         </div>
       </form>
@@ -57,19 +59,19 @@
           <div class="row mb-3">
             <label for="login" class="col-md-2 col-form-label text-warning">Login</label>
             <div class="col-md-4">
-              <input id="login" class="form-control" type="text" placeholder="Login" [(ngModel)]="idRechercher.login" name="login">
+              <input id="login" class="form-control" type="text" placeholder="Login" [(ngModel)]="nouveauAgent.login" name="login">
             </div>
           </div>
           <div class="row mb-3">
             <label for="password" class="col-md-2 col-form-label text-warning">Mot De Passe</label>
             <div class="col-md-4">
-              <input id="password" class="form-control" type="text" placeholder="Mot De Passe" [(ngModel)]="idRechercher.password" name="password">
+              <input id="password" class="form-control" type="text" placeholder="Mot De Passe" [(ngModel)]="nouveauAgent.password" name="password">
             </div>
           </div>
           <div class="row mb-3">
             <label for="isAdmin" class="col-md-2 col-form-label text-warning">Role</label>
             <div class="col-md-4">
-              <select id="isAdmin" class="form-control" [(ngModel)]="idRechercher.isAdmin" name="isAdmin">
+              <select id="isAdmin" class="form-control" [(ngModel)]="nouveauAgent.isAdmin" name="isAdmin">
                 <option value="true">Admin</option>
                 <option value="false">Non Admin</option>
               </select>

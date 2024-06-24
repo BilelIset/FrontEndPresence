@@ -10,7 +10,7 @@ export class LoginService {
   isLoggedIn() {
     throw new Error('Method not implemented.');
   }
-  url='https://back.apirest.tech/';
+  url='http://localhost:8085/';
   
 
   constructor(private http:HttpClient) { }
@@ -33,7 +33,7 @@ export class LoginService {
   }
   addUsers(nouveau: Users) 
    {
-  return this.http.post<Array<Users>> (this.url+'login/add',nouveau);
+  return this.http.post<Boolean> (this.url+'login/add',nouveau);
   }
   updateUsers(idP: number | undefined, nouveau: Users)
    {
