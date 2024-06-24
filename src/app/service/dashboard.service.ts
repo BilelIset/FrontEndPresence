@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LigneAbsence } from '../model/LigneAbsence';
 import { Observable } from 'rxjs';
@@ -7,12 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DashboardService {
-  url="http://localhost:8085/absence"
+  url="https://back.apirest.tech/absence"
 
   constructor(private http :HttpClient)
   { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Accept': 'application/json'
+    })
+  
+  };
   getAbsence() :Observable<Array<LigneAbsence>>{
   
-  return this.http.get<Array<LigneAbsence>> (this.url);
+  return this.http.post<Array<LigneAbsence>> (this.url,this.httpOptions);
 }
 }

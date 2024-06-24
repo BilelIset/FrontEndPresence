@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Salle } from '../model/Salle';
@@ -11,9 +11,15 @@ export class SallesService {
 
   constructor(private http :HttpClient)
   { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Accept': 'application/json'
+    })
+  
+  }; 
   getSalles() :Observable<Array<Salle>>
   {
-  return this.http.get<Array<Salle>> (this.url);
+  return this.http.post<Array<Salle>> (this.url,this.httpOptions);
   }
   deleteSalle(idP: number|undefined)
   {

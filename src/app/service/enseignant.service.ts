@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ens } from '../model/Ens';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,16 @@ export class EnseignantService {
 
   constructor(private http :HttpClient)
   { }
-  getEns() :Observable<Array<Ens>>
+   httpOptions = {
+    headers: new HttpHeaders({
+      'Accept': 'application/json'
+    })
+  
+  }; 
+   getEns() :Observable<Array<Ens>>
   {
-  return this.http.get<Array<Ens>> (this.url);
+     
+  return this.http.post<Array<Ens>> (this.url,this.httpOptions);
   }
  
   

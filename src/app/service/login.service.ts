@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Users } from '../model/Users';
@@ -11,14 +11,21 @@ export class LoginService {
     throw new Error('Method not implemented.');
   }
   url='https://back.apirest.tech/';
+  
 
   constructor(private http:HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Accept': 'application/json'
+    })
+  
+  }; 
   connect(user:any):Observable<any>{
     return this.http.post(this.url+'login',user)
   }
   getUsers() :Observable<Array<Users>>
   {
-  return this.http.get<Array<Users>> (this.url+'login/all');
+  return this.http.post<Array<Users>> (this.url+'login/all',this.httpOptions);
   }
   deleteUsers(idP: number|undefined)
   {
