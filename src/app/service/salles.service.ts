@@ -21,17 +21,9 @@ export class SallesService {
   {
   return this.http.post<Array<Salle>> (this.url,this.httpOptions);
   }
-  deleteSalle(idP: number|undefined)
-  {
-  return this.http.delete (this.url+idP);
-  }
-  addSalle(nouveau: Salle) 
-   {
-  return this.http.post<Array<Salle>> (this.url,nouveau);
-  }
-  updateSalle(idP: number | undefined, nouveau: Salle)
-   {
-  return this.http.put(this.url+idP,nouveau);
-  }
+  
+
+  
+  
   
 }

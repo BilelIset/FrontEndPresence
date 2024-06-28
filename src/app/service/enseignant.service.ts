@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ens } from '../model/Ens';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnseignantService {
 
-  url='https://back.apirest.tech/ens';
+  url='https://back.apirest.tech/';
 
   constructor(private http :HttpClient)
   { }
@@ -21,12 +21,21 @@ export class EnseignantService {
    getEns() :Observable<Array<Ens>>
   {
      
-  return this.http.post<Array<Ens>> (this.url,this.httpOptions);
+  return this.http.post<Array<Ens>> (this.url+"ens",this.httpOptions);
+  }
+  sendEmail(to:string,subject:string,text:string,mat:string):Observable<any>{
+    const params = new HttpParams()
+    .set('to', to)
+    .set('subject', subject)
+    .set('text', text)
+    .set('mat',mat);
+    return this.http.post(this.url+"sendemail",params)
+
   }
  
   
   updateEns(mat: number | undefined, nouveau: Ens)
    {
-  return this.http.put(this.url+"/update?mat="+mat,nouveau);
+  return this.http.put(this.url+"ens/update?mat="+mat,nouveau);
   }
 }

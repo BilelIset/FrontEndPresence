@@ -9,5 +9,6 @@ export class LigneAbsence{
     private  semestre1:string|undefined;
     private  nom_jour:string|undefined;
     private  date:Date|undefined;
+    private notified:boolean|undefined;
     
 }

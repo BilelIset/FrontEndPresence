@@ -14,15 +14,30 @@ ajoutMode= false;
 idRechercher={matEnseignant:'',nomEnseignant:'',depEnseignant:'',email_enseignant:'',tel_enseignant:''}
 listEns:any[]=[];
 modif=false
+ mat2 :any[] = []
   constructor(private ensServ:EnseignantService){}
   
   ngOnInit(): void {
-    
     this.chargerListe();
+    
+    
+  }
+  filtreEmail(){
+    let mat=localStorage.getItem("mat")?.toString()
+    localStorage.removeItem("mat")
+    console.log("matricule récupéré : "+mat)
+    
+    this.mat2=this.listEns.filter(item => item.matEnseignant.toString() == mat);
+    this.idRechercher.nomEnseignant=this.mat2[0].nomEnseignant.toString()
+    this.idRechercher.matEnseignant=this.mat2[0].matEnseignant.toString()
+
+    console.log(this.mat2)
   }
 chargerListe(){
   this.ensServ.getEns().subscribe(data=>{
     this.listEns=data;
+    this.filtreEmail()
+
   })
 }
 editerEnseignant(form: NgForm) {

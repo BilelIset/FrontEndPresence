@@ -14,6 +14,7 @@
             
             
             <th>Séance </th>
+            <th>Notifié</th>
             
             
             
@@ -31,6 +32,7 @@
             
             
             <td>{{ p.nom_seance }}</td>
+            <td [style.backgroundColor]="checkNotif(p).color">{{ checkNotif(p).text }} <button class="btn btn-outline-warning" *ngIf="checkNotif(p).color=='red'" (click)="renvoyerMail(p)"> Renvoyer un email </button></td>
             
             
             
