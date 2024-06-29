@@ -1,12 +1,13 @@
 <div class="card  text-white" style="background-color: rgb(50, 50, 152);">
   <div class="container py-5">
-    <h1 class="text-center">Liste des salles</h1>
+    <h1 class="text-center">Liste des salles </h1> <h3 style="color: rgb(10, 249, 82);">Total : {{size}}</h3>
     <table class="table table-striped table-responsive">
       <thead>
         <tr>
           <th>Id</th>
           <th>Nom</th>
           <th>Département</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
@@ -19,7 +20,10 @@
           <td>{{ p.salle1 }}</td>
           <td>{{ p.nom_salle }}</td>
           <td>{{ p.nomdepsalle }}</td>
+          {{size}}
+         
         </tr>
+
       </tbody>
     </table>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Ens } from '../model/Ens';
 import { EnseignantService } from '../service/enseignant.service';
@@ -9,13 +9,15 @@ import { EnseignantService } from '../service/enseignant.service';
   styleUrl: './enseignant.component.css'
 })
 export class EnseignantComponent implements OnInit {
+  size=0
+  ischeked:boolean=false
   EnseignantCourant= new Ens();
 ajoutMode= false;
 idRechercher={matEnseignant:'',nomEnseignant:'',depEnseignant:'',email_enseignant:'',tel_enseignant:''}
 listEns:any[]=[];
 modif=false
  mat2 :any[] = []
-  constructor(private ensServ:EnseignantService){}
+  constructor(private ensServ:EnseignantService,private change:ChangeDetectorRef){}
   
   ngOnInit(): void {
     this.chargerListe();
@@ -91,14 +93,23 @@ filtre(): any[] {
       item.tel_enseignant.toLowerCase().includes(this.idRechercher.tel_enseignant?.toLowerCase())
     );
   }
+  this.size=filteredList.length
+  this.ischeked=true
+
 
   return filteredList.sort((a=new Ens(), b=new Ens()) => a.nomEnseignant.localeCompare(b.nomEnseignant));
 
 }
+ngAfterViewChecked() {
+  if (this.ischeked) {
+    this.ischeked = false;
+    this.change.detectChanges();
+    
+  }}
 selectionnerEnseignant(p: any) {
 this.EnseignantCourant={... p}
   this.modif=true;
 }
-;
+
 
 }

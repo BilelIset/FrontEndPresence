@@ -44,7 +44,7 @@
         
         <div class="row">
           <div class="col-md-2 offset-md-2">
-            <button type="submit" class="btn btn-warning w-100" style="color: white;" (click)="editerEnseignant(EnseignantForm)" [disabled]="!EnseignantForm.form.valid">Modifier <i class="bi bi-pencil"></i></button>
+            <button type="submit" class="btn btn-warning w-100" style="color: white;" (click)="editerEnseignant(EnseignantForm)" [disabled]="!EnseignantForm.form.valid">Enregistrer <i class="bi bi-floppy"></i></button>
           </div>
           <div class="col-md-2">
             <button class="btn btn-outline-light w-100" type="reset" (click)="fermerEdition()">Annuler</button>
@@ -55,6 +55,7 @@
   
     <div class="container mt-5">
         <h1 class="text-white">Liste des Enseignants</h1>
+        <h3 style="color: azure;">Total:{{size}}</h3>
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
