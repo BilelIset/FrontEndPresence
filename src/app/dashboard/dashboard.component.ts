@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DashboardService } from '../service/dashboard.service';
 import { Router } from '@angular/router';
 import { EnseignantService } from '../service/enseignant.service';
+import { LigneAbsence } from '../model/LigneAbsence';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,9 +16,23 @@ export class DashboardComponent implements OnInit {
   matRecup: any;
   listAbsence: any[] = [];
   idAbs:any;
+  size: any;
+  needsChangeDetection: boolean=false;
 
-  constructor(private abserv: DashboardService, private router: Router, private ensServ: EnseignantService) {}
-
+  constructor(private abserv: DashboardService, private router: Router, private ensServ: EnseignantService,private change:ChangeDetectorRef) {}
+  idRechercher={
+    "num" : '',
+    "nom_salle" : '',
+    "nom_matiere": '',
+    "ensi1" : '',
+    "nom_seance" : '',
+    "seanceDouble": '',
+    "annee1" : '',
+    "semestre1" : '',
+    "nom_jour" : '',
+    "date" : '',
+    "notified" : ''
+  }
   ngOnInit(): void {
     this.abserv.getAbsence().subscribe(data => {
       this.listAbsence = data;
@@ -64,4 +79,58 @@ export class DashboardComponent implements OnInit {
       return { text: 'Non', color: 'red' };
     }
   }
-}
+  filtre(): any[] {
+    let filteredList = this.listAbsence;
+  
+    if (this.idRechercher.num !== null && this.idRechercher.num !== undefined) {
+      filteredList = filteredList.filter(item =>
+        item.num.toString().includes(this.idRechercher.num.toString())
+      );
+    }
+  
+    if (this.idRechercher.nom_salle && this.idRechercher.nom_salle !== '') {
+      filteredList = filteredList.filter(item =>
+        item.nom_salle.toLowerCase().includes(this.idRechercher.nom_salle.toLowerCase())
+      );
+    }
+  
+    
+    if (this.idRechercher.ensi1 && this.idRechercher.ensi1 !== '') {
+      filteredList = filteredList.filter(item =>
+        item.ensi1.toLowerCase().includes(this.idRechercher.ensi1.toLowerCase())
+      );
+    }
+    if (this.idRechercher.notified !=='') {
+      filteredList = filteredList.filter(item =>
+        item.notified.toString().toLowerCase().includes(this.idRechercher.notified.toString().toLowerCase())
+      );
+    }
+    if (this.idRechercher.date && this.idRechercher.date !== '') {
+      filteredList = filteredList.filter(item =>
+        item.date.toLowerCase().includes(this.idRechercher.date.toLowerCase())
+      );
+    }
+    if (this.idRechercher.nom_jour && this.idRechercher.nom_jour !== '') {
+      filteredList = filteredList.filter(item =>
+        item.nom_jour.toLowerCase().includes(this.idRechercher.nom_jour.toLowerCase())
+      );
+    }
+    if (this.idRechercher.nom_seance && this.idRechercher.nom_seance !== '') {
+      filteredList = filteredList.filter(item =>
+        item.nom_seance.toLowerCase().includes(this.idRechercher.nom_seance.toLowerCase())
+      );
+    }
+  
+    this.size = filteredList.length;
+  
+    this.needsChangeDetection = true;
+  
+    console.log(this.size);
+    return filteredList;
+  }
+  ngAfterViewChecked() {
+    if (this.needsChangeDetection) {
+      this.needsChangeDetection = false;
+      this.change.detectChanges();
+    }
+}}

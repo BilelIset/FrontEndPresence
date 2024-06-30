@@ -48,7 +48,6 @@ filtre(): any[] {
 
   this.size = filteredList.length;
 
-  // Run the change detection in a safe manner
   this.needsChangeDetection = true;
 
   console.log(this.size);

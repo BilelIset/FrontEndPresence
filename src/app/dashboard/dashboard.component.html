@@ -21,8 +21,18 @@
           </tr>
         </thead>
         <tbody>
-          
-          <tr *ngFor="let p of listAbsence">
+          <tr>
+            
+          <td><input class="form-control" name="num" [(ngModel)]="idRechercher.num"></td>
+          <td><input class="form-control" name="date" [(ngModel)]="idRechercher.date"></td>
+          <td><input class="form-control" name="nom_jour" [(ngModel)]="idRechercher.nom_jour"></td>
+          <td><input class="form-control" name="ensi1" [(ngModel)]="idRechercher.ensi1"></td>
+          <td><input class="form-control" name="nom_matiere"[(ngModel)]="idRechercher.nom_matiere"></td>
+          <td><input class="form-control" name="nom_salle" [(ngModel)]="idRechercher.nom_salle"></td>
+          <td><input class="form-control" name="nom_seance" [(ngModel)]="idRechercher.nom_seance"></td>
+          <td><input class="form-control" name="notified" [(ngModel)]="idRechercher.notified"></td>
+        </tr>
+          <tr *ngFor="let p of filtre()">
             <td>{{ p.num }}</td>
             <td>{{ p.date }}</td>
             <td>{{ p.nom_jour }}</td>
@@ -32,7 +42,7 @@
             
             
             <td>{{ p.nom_seance }}</td>
-            <td [style.backgroundColor]="checkNotif(p).color">{{ checkNotif(p).text }} <button class="btn btn-outline-warning" *ngIf="checkNotif(p).color=='red'" (click)="renvoyerMail(p)"> Renvoyer un email </button></td>
+            <td>{{p.notified}}</td>
             
             
             
