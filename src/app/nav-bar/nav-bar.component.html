@@ -18,6 +18,11 @@
     <li class="nav-item">
       <a class="nav-link" style="color: blue;" routerLink="/salle" routerLinkActive="active">Salles</a>
     </li>
+    <div *ngIf="isMobile" >
+    <li class="nav-item" >
+      <a class="nav-link" style="color: rgb(243, 10, 10);" href="https://www.apirest.tech/downloads/app-release.apk" routerLinkActive="active"><i class="bi bi-download"></i> Android Pointage </a>
+    </li>
+    </div>
   </ul>
   <div class="mt-auto p-3">
     <h5 style="color: blue;">{{loggedUser}}</h5>

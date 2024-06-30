@@ -19,3 +19,7 @@
 .p-3 {
   padding: 1rem;
 }
+@media (max-width: 600px) {
+  .mobile-only {
+    display: none;
+  }}

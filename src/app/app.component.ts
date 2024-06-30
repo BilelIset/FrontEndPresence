@@ -10,10 +10,16 @@ import { Resp } from './model/Resp';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  constructor(private  logserv:LoginService){}
-
+  constructor(){}
+user:any;
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('login'); // Vérifie si 'login' est présent dans localStorage
+    if(localStorage.getItem('login')!=null){
+      this.user=localStorage.getItem('login')?.toUpperCase()
+
+      return true
+    }else{
+      return false}
+     
   }
 resp=new Resp();
   title = 'presence';

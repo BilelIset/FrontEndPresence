@@ -11,7 +11,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnseignantComponent } from './enseignant/enseignant.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
   
   {path:"salle",component:SalleComponent ,canActivate:[AuthGuard]},
   {path:"enseignant",component:EnseignantComponent ,canActivate:[AuthGuard]},
