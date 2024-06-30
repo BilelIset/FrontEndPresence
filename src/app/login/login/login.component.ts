@@ -36,7 +36,7 @@ alert("Formulaire invalide !!")
     );
   }
   checkScreenSize() {
-    if(  window.matchMedia('(max-width: 800px)').matches  )
+    if(  window.matchMedia('(max-width: 600px)').matches  )
       this.isMobile=true;
     
   }
