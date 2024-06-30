@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { User } from './model/User';
 import { NgForm } from '@angular/forms';
 import { LoginService } from './service/login.service';
@@ -9,8 +9,13 @@ import { Resp } from './model/Resp';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit,OnDestroy {
+
   constructor(){}
+  ngOnDestroy(): void {
+localStorage.removeItem("mat")  }
+  ngOnInit(): void {
+  }
 user:any;
   isLoggedIn(): boolean {
     if(localStorage.getItem('login')!=null){

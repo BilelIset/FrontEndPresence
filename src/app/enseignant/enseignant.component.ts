@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Ens } from '../model/Ens';
 import { EnseignantService } from '../service/enseignant.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enseignant',
@@ -17,16 +18,20 @@ idRechercher={matEnseignant:'',nomEnseignant:'',depEnseignant:'',email_enseignan
 listEns:any[]=[];
 modif=false
  mat2 :any[] = []
-  constructor(private ensServ:EnseignantService,private change:ChangeDetectorRef){}
+  constructor(private ensServ:EnseignantService,private change:ChangeDetectorRef,private router:Router){}
   
   ngOnInit(): void {
     this.chargerListe();
     
     
   }
+  matricule:any
   filtreEmail(){
     let mat=localStorage.getItem("mat")?.toString()
-    localStorage.removeItem("mat")
+    console.log("matricule récupré declaré any   "+this.matricule)
+    this.matricule=localStorage.getItem("mat"?.toString())
+    console.log("matricule récupré aprés affectation   "+this.matricule)
+
     console.log("matricule récupéré : "+mat)
     
     this.mat2=this.listEns.filter(item => item.matEnseignant.toString() == mat);
@@ -43,14 +48,18 @@ chargerListe(){
   })
 }
 editerEnseignant(form: NgForm) {
-  let quest: boolean = confirm("voulez vous Confirmer les modification apportés à : \n "+form.value.nomEnseignant  + "\n  Email : "+form.value.email_enseignant  +" \n Tel° :  "+form.value.tel_enseignant)
+  let quest: boolean = confirm("Confirmer les modification apportés à : \n "+form.value.nomEnseignant  + "\n  Email : "+form.value.email_enseignant  +" \n Tel° :  "+form.value.tel_enseignant)
 if(quest)
 {this.ensServ.updateEns(Number(form.value.matEnseignant),form.value).subscribe(data=>{
 if(data){
+  if(this.matricule!=undefined){
+    this.router.navigate(['/dashboard'])
+  }else{
   this.ajoutMode=true;
   alert("Modification enregistré avec succées")
   this.modif=false;
   this.chargerListe()
+  }
 }else{
   this.ajoutMode=false;
   alert("Echec de modification de l'enseignant")
