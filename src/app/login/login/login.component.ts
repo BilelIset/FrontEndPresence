@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { NgForm } from '@angular/forms';
 import { Resp } from '../../model/Resp';
@@ -11,11 +11,15 @@ import { from } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']  // Notez le 's' manquant précédemment
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  isMobile:boolean=false;
   resp: Resp = new Resp();
   userToLog: User = new User();
 
-  constructor(private logserv: LoginService, private router: Router) {}
+  constructor(private logserv: LoginService, private router: Router,private cdr:ChangeDetectorRef) {}
+  ngOnInit(): void {
+    this.checkScreenSize()
+}
 
   connecter(form: NgForm) {
     if (form.invalid) {
@@ -30,6 +34,11 @@ alert("Formulaire invalide !!")
        
       }
     );
+  }
+  checkScreenSize() {
+    if(  window.matchMedia('(max-width: 800px)').matches  )
+      this.isMobile=true;
+    
   }
 
   verifLogin(resp: Resp,login:any) {

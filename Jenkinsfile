@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker stop front_iset || true'
-                    sh 'docker rm front_iset || true'
+                    sh 'docker rm front_iset -f || true'
                 }
             }
         }

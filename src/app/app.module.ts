@@ -15,6 +15,7 @@ import { AgentComponent } from './agent/agent.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnseignantComponent } from './enseignant/enseignant.component';
 import {  AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DownloadcomponentComponent } from './downloadcomponent/downloadcomponent.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {  AngularFontAwesomeModule } from 'angular-font-awesome';
     NavBarComponent,
     AgentComponent,
     DashboardComponent,
-    EnseignantComponent
+    EnseignantComponent,
+    DownloadcomponentComponent
   ],
   imports: [
     BrowserModule,

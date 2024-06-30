@@ -1,7 +1,9 @@
+
 <div style="align-items: center;">
   <img style="height: 25%; width: 25%; margin-left: 35%; margin-bottom: 5%; margin-top: 5%;" src="./assets/logo.png">
 </div>
 <div class="container" style="margin-left: 30%;">
+
   <form #loginForm="ngForm" (ngSubmit)="connecter(loginForm)">
     <div class="form-group">
       <label style="margin-right: 12.2%;">Login</label>
@@ -15,4 +17,6 @@
   </form>
   <br><br>
   {{ resp.admin }}
+</div>
+<div *ngIf="isMobile">  <a href="https://www.apirest.tech/downloads/app-release.apk" download>Click here to download the app</a>
 </div>
